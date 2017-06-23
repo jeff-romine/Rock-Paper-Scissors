@@ -7,17 +7,63 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<body>
+<body id="content">
+
 <p>Type r,p,or s to begin.</p>
 
-<p>You typed <span id="key">Nothing...</span></p>
+<p>You chose: <span id="user-choice">?</span></p>
+<p>The computer chose: <span id="computer-choice"></span>
+</p>
+<p>Wins: <span id="wins">0</span></p>
+<p>Losses:<span id="losses">0</span></p>
+<p>Ties:<span id="ties">0</span></p>
 
 </body>
 
 <script type="text/javascript">
-  var keyValue=document.getElementById("key");
-  document.onkeyup = function(event) {
-    keyValue.innerHTML = event.key;
+  var wins = 0, losses = 0, ties = 0;
+
+  document.onkeyup = function (event) {
+
+    var userChoice = event.key;
+    var computerChoice = ["r", "p", "s"][Math.floor(Math.random() * 3)];
+
+    if (userChoice === 'r') {
+      if (computerChoice === 's') {
+        wins++;
+      } else if (computerChoice === 'p') {
+        losses++;
+      } else {
+        ties++;
+      }
+    }
+
+    if (userChoice === 'p') {
+      if (computerChoice === 'r') {
+        wins++;
+      } else if (computerChoice === 's') {
+        losses++;
+      } else {
+        ties++;
+      }
+    }
+
+    if (userChoice === 's') {
+      if (computerChoice === 'p') {
+        wins++;
+      } else if (computerChoice === 'r') {
+        losses++;
+      } else {
+        ties++;
+      }
+    }
+
+    document.getElementById('user-choice').textContent = userChoice;
+    document.getElementById('computer-choice').textContent = computerChoice;
+    document.getElementById('wins').textContent = wins;
+    document.getElementById('losses').textContent = losses;
+    document.getElementById('ties').textContent = losses;
+
   }
 </script>
 </html>
