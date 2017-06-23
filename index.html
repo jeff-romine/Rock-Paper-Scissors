@@ -8,12 +8,16 @@
   <title>Document</title>
 </head>
 <body>
-Type r,p, or s to start.
+<p>Type r,p,or s to begin.</p>
+
+<p>You typed <span id="key">Nothing...</span></p>
+
 </body>
 
 <script type="text/javascript">
+  var keyValue=document.getElementById("key");
   document.onkeyup = function(event) {
-    // put your code here
+    keyValue.innerHTML = event.key;
   }
 </script>
 </html>
